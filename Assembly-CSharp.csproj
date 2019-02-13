@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Game\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Scripts\Game\ManagerVas.cs" />
+    <Compile Include="Assets\Scripts\Game\PlatformManager.cs" />
     <Compile Include="Assets\Scripts\Game\PlatformSpawner.cs" />
     <Compile Include="Assets\Scripts\Game\PlayerController.cs" />
     <Compile Include="Assets\Scripts\UI\BgTheme.cs" />
@@ -280,20 +281,20 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>D:/ooo609/Project/Unity/MagicPath/Assets/Demigiant/DemiLib/DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>D:/ooo609/Project/Unity/MagicPath/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>D:/ooo609/Project/Unity/MagicPath/Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
+    </Reference>
     <Reference Include="DOTween46">
       <HintPath>D:/ooo609/Project/Unity/MagicPath/Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
     </Reference>
     <Reference Include="DOTween50">
       <HintPath>D:/ooo609/Project/Unity/MagicPath/Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween43">
-      <HintPath>D:/ooo609/Project/Unity/MagicPath/Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>D:/ooo609/Project/Unity/MagicPath/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
-    </Reference>
-    <Reference Include="DemiLib">
-      <HintPath>D:/ooo609/Project/Unity/MagicPath/Assets/Demigiant/DemiLib/DemiLib.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenPro">
       <HintPath>D:/ooo609/Project/Unity/MagicPath/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>

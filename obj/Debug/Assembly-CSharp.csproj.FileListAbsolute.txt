@@ -165,3 +165,15 @@ D:\ooo609\Project\Unity\MagicPath\obj\Debug\Assembly-CSharp.csproj.CoreCompileIn
 D:\ooo609\Project\Unity\MagicPath\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 D:\ooo609\Project\Unity\MagicPath\obj\Debug\Assembly-CSharp.dll
 D:\ooo609\Project\Unity\MagicPath\obj\Debug\Assembly-CSharp.pdb
+D:\ooo609\Project\Unity\MagicPath\Temp\bin\Debug\DemiLib.dll
+D:\ooo609\Project\Unity\MagicPath\Temp\bin\Debug\DOTween.dll
+D:\ooo609\Project\Unity\MagicPath\Temp\bin\Debug\DOTween43.dll
+D:\ooo609\Project\Unity\MagicPath\Temp\bin\Debug\DOTween46.dll
+D:\ooo609\Project\Unity\MagicPath\Temp\bin\Debug\DOTween50.dll
+D:\ooo609\Project\Unity\MagicPath\Temp\bin\Debug\DOTweenPro.dll
+D:\ooo609\Project\Unity\MagicPath\Temp\bin\Debug\DemiLib.xml
+D:\ooo609\Project\Unity\MagicPath\Temp\bin\Debug\DOTween.xml
+D:\ooo609\Project\Unity\MagicPath\Temp\bin\Debug\DOTween43.xml
+D:\ooo609\Project\Unity\MagicPath\Temp\bin\Debug\DOTween46.xml
+D:\ooo609\Project\Unity\MagicPath\Temp\bin\Debug\DOTween50.xml
+D:\ooo609\Project\Unity\MagicPath\Temp\bin\Debug\DOTweenPro.xml

@@ -17,6 +17,10 @@ public class ManagerVas : ScriptableObject {
     /// </summary>
     public List<Sprite> bgThemeSpriteList = new List<Sprite>();
     /// <summary>
+    /// 获取不同的主题平台
+    /// </summary>
+    public List<Sprite> platformThemeSpriteList = new List<Sprite>();
+    /// <summary>
     /// 人物预制体
     /// </summary>
     public GameObject chacaterPre;
@@ -28,4 +32,24 @@ public class ManagerVas : ScriptableObject {
     /// 下一个平台所产生的位移
     /// </summary>
     public float nextXPos = 0.554f, nextYPos = 0.645f;
+    /// <summary>
+    /// 普通组合平台链表
+    /// </summary>
+    public List<GameObject> commonPlatformGroupList = new List<GameObject>();
+    /// <summary>
+    /// 草地组合平台链表
+    /// </summary>
+    public List<GameObject> grassPlatformGroupList = new List<GameObject>();
+    /// <summary>
+    /// 冬季组合平台链表
+    /// </summary>
+    public List<GameObject> winterPlatformGroupList = new List<GameObject>();
+    /// <summary>
+    /// 左边钉子组合平台
+    /// </summary>
+    public GameObject SpikePlatformGroupLeft;
+    /// <summary>
+    /// 右边钉子组合平台
+    /// </summary>
+    public GameObject SpikePlatformGroupRight;
 }
