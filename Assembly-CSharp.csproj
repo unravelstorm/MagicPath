@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Game\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Scripts\Game\ManagerVas.cs" />
+    <Compile Include="Assets\Scripts\Game\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\Game\PlatformManager.cs" />
     <Compile Include="Assets\Scripts\Game\PlatformSpawner.cs" />
     <Compile Include="Assets\Scripts\Game\PlayerController.cs" />
