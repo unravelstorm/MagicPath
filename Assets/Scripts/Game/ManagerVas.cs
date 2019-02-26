@@ -47,9 +47,17 @@ public class ManagerVas : ScriptableObject {
     /// <summary>
     /// 左边钉子组合平台
     /// </summary>
-    public GameObject SpikePlatformGroupLeft;
+    public GameObject spikePlatformGroupLeft;
     /// <summary>
     /// 右边钉子组合平台
     /// </summary>
-    public GameObject SpikePlatformGroupRight;
+    public GameObject spikePlatformGroupRight;
+    /// <summary>
+    /// 死亡特效
+    /// </summary>
+    public GameObject deathEffect;
+    /// <summary>
+    /// 钻石
+    /// </summary>
+    public GameObject diamond;
 }

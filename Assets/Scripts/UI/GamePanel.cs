@@ -22,12 +22,35 @@ public class GamePanel : MonoBehaviour {
     }
     private void Awake()
     {
+        //监听显示面板事件码
         EventCenter.AddListener(EventDefine.ShowGamePanel, Show);
+        //监听更新分数文本事件码
+        EventCenter.AddListener<int>(EventDefine.UpdateScoreText, UpdateScoreText);
+        //监听更新钻石文本事件码
+        EventCenter.AddListener<int>(EventDefine.UpdateDiamondText, UpdateDiamondText);
         Init();
     }
     private void OnDestroy()
     {
         EventCenter.RemoveListener(EventDefine.ShowGamePanel, Show);
+        EventCenter.RemoveListener<int>(EventDefine.UpdateScoreText, UpdateScoreText);
+        EventCenter.RemoveListener<int>(EventDefine.UpdateDiamondText, UpdateDiamondText);
+    }
+    /// <summary>
+    /// 更新分数文本
+    /// </summary>
+    /// <param name="score"></param>
+    private void UpdateScoreText(int score)
+    {
+        txt_Score.text = score.ToString();
+    }
+    /// <summary>
+    /// 更新钻石文本
+    /// </summary>
+    /// <param name="score"></param>
+    private void UpdateDiamondText(int diamond)
+    {
+        txt_DiamondCount.text = diamond.ToString();
     }
     /// <summary>
     /// 显示此面板
@@ -44,6 +67,8 @@ public class GamePanel : MonoBehaviour {
         btn_Play.gameObject.SetActive(true);
         btn_Pause.gameObject.SetActive(false);
         //游戏暂停
+        Time.timeScale = 0;
+        GameManager.Instance.IsGamePause = true;
 
     }
     /// <summary>
@@ -54,6 +79,8 @@ public class GamePanel : MonoBehaviour {
         btn_Play.gameObject.SetActive(false);
         btn_Pause.gameObject.SetActive(true);
         //继续游戏
+        Time.timeScale = 1;
+        GameManager.Instance.IsGamePause = false;
 
     }
 }

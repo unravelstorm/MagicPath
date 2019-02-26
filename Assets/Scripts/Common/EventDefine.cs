@@ -2,4 +2,9 @@
 {
     ShowGamePanel,
     DecidePath,
+    AddScore,
+    UpdateScoreText,
+    UpdateDiamondText,
+    PlayerStartMove,
+    AddDiamond,
 }

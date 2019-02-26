@@ -10,7 +10,18 @@ public enum PlatformGroupType
 
 public class PlatformSpawner : MonoBehaviour {
     private ManagerVas vars;
-
+    /// <summary>
+    /// 里程碑，判断平台掉落速度
+    /// </summary>
+    public int milestoneCount = 10;
+    /// <summary>
+    /// 掉落时间，最小掉落时间
+    /// </summary>
+    public float fallTime = 2f, minFallTime = 0.5f;
+    /// <summary>
+    /// 掉落时间系数
+    /// </summary>
+    public float multiple = 0.9f;
     /// <summary>
     /// 初始平台位置
     /// </summary>
@@ -144,7 +155,14 @@ public class PlatformSpawner : MonoBehaviour {
                 default:break;
             }
         }
-        
+        //生成钻石
+        int diamondRan = Random.Range(0, 10);
+        if (diamondRan == 6 && GameManager.Instance.IsStartMove)
+        {
+            GameObject go = ObjectPool.Instance.GetDiamond();
+            go.transform.position = new Vector3(platformSpawnPos.x, platformSpawnPos.y + 0.5f, 0);
+            go.SetActive(true);
+        }
         if (isLeftSpawn)
         {
             platformSpawnPos = new Vector3(platformSpawnPos.x - vars.nextXPos, platformSpawnPos.y + vars.nextYPos, 0);
@@ -176,59 +194,61 @@ public class PlatformSpawner : MonoBehaviour {
     /// </summary>
     private void NormalPlatformSpawn()
     {
-        GameObject go = Instantiate(vars.normalPlatformPre, transform);
+        GameObject go = ObjectPool.Instance.GetNormalPlatform();
         go.transform.position = platformSpawnPos;
-        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite);
+        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite,fallTime);
+        go.SetActive(true);
     }
     /// <summary>
     /// 生成普通组合平台
     /// </summary>
     private void CommonPlatformGroupSpawn()
     {
-        int ran = Random.Range(0, vars.commonPlatformGroupList.Count);
-        GameObject go = Instantiate(vars.commonPlatformGroupList[ran], transform);
+        GameObject go = ObjectPool.Instance.GetCommonPlatform();
         go.transform.position = platformSpawnPos;
         //go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite);
-        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite, obstacleDir);
+        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite, obstacleDir,fallTime);
+        go.SetActive(true);
     }
     /// <summary>
     /// 生成草地组合平台
     /// </summary>
     private void GrassPlatformGroupSpawn()
     {
-        int ran = Random.Range(0, vars.grassPlatformGroupList.Count);
-        GameObject go = Instantiate(vars.grassPlatformGroupList[ran], transform);
+        GameObject go = ObjectPool.Instance.GetGrassPlatform();
         go.transform.position = platformSpawnPos;
         //go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite);
-        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite, obstacleDir);
+        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite, obstacleDir,fallTime);
+        go.SetActive(true);
     }
     /// <summary>
     /// 生成冬季组合平台
     /// </summary>
     private void WinterPlatformGroupSpawn()
     {
-        int ran = Random.Range(0, vars.winterPlatformGroupList.Count);
-        GameObject go = Instantiate(vars.winterPlatformGroupList[ran], transform);
+        GameObject go = ObjectPool.Instance.GetWinterPlatform();
         go.transform.position = platformSpawnPos;
         //go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite);
-        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite, obstacleDir);
+        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite, obstacleDir,fallTime);
+        go.SetActive(true);
     }
     /// <summary>
     /// 生成钉子组合平台
     /// </summary>
     private void SpikePlatformGroupSpawn(bool isSpikeLeftSpawn)
     {
-        GameObject temp = null;
+        GameObject go = null;
         if (isSpikeLeftSpawn)
         {
-            temp = Instantiate(vars.SpikePlatformGroupLeft, transform);
+            go = ObjectPool.Instance.GetSpikePlatformLeft();
         }
         else
         {
-            temp = Instantiate(vars.SpikePlatformGroupRight, transform);
+            go = ObjectPool.Instance.GetSpikePlatformRight();
         }
-        temp.transform.position = platformSpawnPos;
-        temp.GetComponent<PlatformManager>().Init(curPlatformThemeSprite);
+        go.transform.position = platformSpawnPos;
+        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite,fallTime);
+        go.SetActive(true);
     }
     /// <summary>
     /// 钉子方向平台生成
@@ -241,7 +261,7 @@ public class PlatformSpawner : MonoBehaviour {
             spikeDirPlatformCount--;
             for (int i = 0; i < 2; i++)
             {
-                GameObject go = Instantiate(vars.normalPlatformPre, transform);
+                GameObject go = ObjectPool.Instance.GetNormalPlatform();
                 if (i==0)//原来方向平台生成
                 {
                     go.transform.position = platformSpawnPos;
@@ -266,7 +286,8 @@ public class PlatformSpawner : MonoBehaviour {
                         spikeDirPlatformPos = new Vector3(spikeDirPlatformPos.x + vars.nextXPos, spikeDirPlatformPos.y + vars.nextYPos, 0);
                     }
                 }
-                go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite);
+                go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite,fallTime);
+                go.SetActive(true);
             }
         }
         else
@@ -276,4 +297,27 @@ public class PlatformSpawner : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 更新平台掉落时间
+    /// </summary>
+    private void UpdateFallTime()
+    {
+        if (GameManager.Instance.GetGameScore() > milestoneCount)
+        {
+            milestoneCount *= 2;
+            fallTime *= multiple;
+            if (fallTime < minFallTime)
+            {
+                fallTime = minFallTime;
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.IsGameStarted && !GameManager.Instance.IsGameOver)
+        {
+            UpdateFallTime();
+        }
+    }
 }

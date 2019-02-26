@@ -39,7 +39,10 @@ MonoBehaviour:
   - {fileID: 1096358719426188, guid: da1572d38e3e6264b937933dbb7419d6, type: 2}
   - {fileID: 1521639004796748, guid: b8f74a3ba1bf0c2468c18426a08c2979, type: 2}
   - {fileID: 1033124039502172, guid: deb1bbe097aee2f4eb74cbda2fac84b9, type: 2}
-  SpikePlatformGroupLeft: {fileID: 1936493406582484, guid: 3491de774ecc7f84a99a566c68a4cf0f,
+  spikePlatformGroupLeft: {fileID: 1936493406582484, guid: 3491de774ecc7f84a99a566c68a4cf0f,
     type: 2}
-  SpikePlatformGroupRight: {fileID: 1008339614428974, guid: 7e939a0fbee04c849a1bd137802a5406,
+  spikePlatformGroupRight: {fileID: 1008339614428974, guid: 7e939a0fbee04c849a1bd137802a5406,
     type: 2}
+  deathEffect: {fileID: 1790638546272648, guid: e62560033e3a8414b9072687e83de5b2,
+    type: 2}
+  diamond: {fileID: 1627285891526474, guid: 3af01e5b2165f4c4184d55f1c6335158, type: 2}

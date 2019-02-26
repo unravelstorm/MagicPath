@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61683881455804470}
   - component: {fileID: 50524290871352804}
   - component: {fileID: 114609254788036200}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderers:
   - {fileID: 212598386588911022}
+  obstacle: {fileID: 0}
 --- !u!212 &212598386588911022
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 61430494095845378}
   - component: {fileID: 50294162714815780}
   - component: {fileID: 114525327607422944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlatformCommonGroup2
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -39,9 +39,9 @@ GameObject:
   - component: {fileID: 4250608121626678}
   - component: {fileID: 212501780400834388}
   - component: {fileID: 61431354208387180}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

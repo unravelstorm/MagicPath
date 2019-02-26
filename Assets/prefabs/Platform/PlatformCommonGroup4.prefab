@@ -37,9 +37,9 @@ GameObject:
   - component: {fileID: 4489183652455682}
   - component: {fileID: 212215312230713120}
   - component: {fileID: 61132433565953618}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,9 +54,9 @@ GameObject:
   - component: {fileID: 4771670664372602}
   - component: {fileID: 212045121425514260}
   - component: {fileID: 61815558998370194}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 61070168360307638}
   - component: {fileID: 50778293192122104}
   - component: {fileID: 114797173646235540}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlatformCommonGroup4
   m_TagString: Platform
   m_Icon: {fileID: 0}
