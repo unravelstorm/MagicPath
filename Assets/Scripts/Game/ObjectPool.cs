@@ -14,6 +14,11 @@ public class ObjectPool : MonoBehaviour {
     private List<GameObject> winterPlatformList = new List<GameObject>();
     private List<GameObject> spikePlatformLeftList = new List<GameObject>();
     private List<GameObject> spikePlatformRightList = new List<GameObject>();
+    /// <summary>
+    /// 死亡特效list
+    /// </summary>
+    private List<GameObject> deathEffectList = new List<GameObject>();
+    private List<GameObject> diamondList = new List<GameObject>();
     private ManagerVas vars;
 
     private void Awake()
@@ -57,14 +62,23 @@ public class ObjectPool : MonoBehaviour {
         //将左钉子平台放入对象链表
         for (int i = 0; i < initSpawnCount; i++)
         {
-            SetList(vars.SpikePlatformGroupLeft, ref spikePlatformLeftList);
+            SetList(vars.spikePlatformGroupLeft, ref spikePlatformLeftList);
         }
         //将右钉子平台放入对象链表
         for (int i = 0; i < initSpawnCount; i++)
         {
-            SetList(vars.SpikePlatformGroupRight, ref spikePlatformRightList);
+            SetList(vars.spikePlatformGroupRight, ref spikePlatformRightList);
         }
-
+        //将死亡特效放入对象链表
+        for (int i = 0; i < initSpawnCount; i++)
+        {
+            SetList(vars.deathEffect, ref deathEffectList);
+        }
+        //将钻石放入对象链表
+        for (int i = 0; i < initSpawnCount; i++)
+        {
+            SetList(vars.diamond, ref diamondList);
+        }
     }
 
     /// <summary>
@@ -155,7 +169,7 @@ public class ObjectPool : MonoBehaviour {
                 return spikePlatformLeftList[i];
             }
         }
-        return SetList(vars.SpikePlatformGroupLeft, ref spikePlatformLeftList);
+        return SetList(vars.spikePlatformGroupLeft, ref spikePlatformLeftList);
     }
     /// <summary>
     /// 获取右钉子平台
@@ -170,6 +184,36 @@ public class ObjectPool : MonoBehaviour {
                 return spikePlatformRightList[i];
             }
         }
-        return SetList(vars.SpikePlatformGroupRight, ref spikePlatformRightList);
+        return SetList(vars.spikePlatformGroupRight, ref spikePlatformRightList);
+    }
+    /// <summary>
+    /// 获取死亡特效
+    /// </summary>
+    /// <returns></returns>
+    public GameObject GetDeathEffect()
+    {
+        for (int i = 0; i < deathEffectList.Count; i++)
+        {
+            if (deathEffectList[i].activeInHierarchy == false)
+            {
+                return deathEffectList[i];
+            }
+        }
+        return SetList(vars.deathEffect, ref deathEffectList);
+    }
+    /// <summary>
+    /// 获取钻石
+    /// </summary>
+    /// <returns></returns>
+    public GameObject GetDiamond()
+    {
+        for (int i = 0; i < diamondList.Count; i++)
+        {
+            if (diamondList[i].activeInHierarchy == false)
+            {
+                return diamondList[i];
+            }
+        }
+        return SetList(vars.diamond, ref diamondList);
     }
 }

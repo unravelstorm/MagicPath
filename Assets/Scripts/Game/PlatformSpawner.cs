@@ -10,7 +10,18 @@ public enum PlatformGroupType
 
 public class PlatformSpawner : MonoBehaviour {
     private ManagerVas vars;
-
+    /// <summary>
+    /// 里程碑，判断平台掉落速度
+    /// </summary>
+    public int milestoneCount = 10;
+    /// <summary>
+    /// 掉落时间，最小掉落时间
+    /// </summary>
+    public float fallTime = 2f, minFallTime = 0.5f;
+    /// <summary>
+    /// 掉落时间系数
+    /// </summary>
+    public float multiple = 0.9f;
     /// <summary>
     /// 初始平台位置
     /// </summary>
@@ -144,7 +155,14 @@ public class PlatformSpawner : MonoBehaviour {
                 default:break;
             }
         }
-        
+        //生成钻石
+        int diamondRan = Random.Range(0, 10);
+        if (diamondRan == 6 && GameManager.Instance.IsStartMove)
+        {
+            GameObject go = ObjectPool.Instance.GetDiamond();
+            go.transform.position = new Vector3(platformSpawnPos.x, platformSpawnPos.y + 0.5f, 0);
+            go.SetActive(true);
+        }
         if (isLeftSpawn)
         {
             platformSpawnPos = new Vector3(platformSpawnPos.x - vars.nextXPos, platformSpawnPos.y + vars.nextYPos, 0);
@@ -178,7 +196,7 @@ public class PlatformSpawner : MonoBehaviour {
     {
         GameObject go = ObjectPool.Instance.GetNormalPlatform();
         go.transform.position = platformSpawnPos;
-        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite);
+        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite,fallTime);
         go.SetActive(true);
     }
     /// <summary>
@@ -189,7 +207,7 @@ public class PlatformSpawner : MonoBehaviour {
         GameObject go = ObjectPool.Instance.GetCommonPlatform();
         go.transform.position = platformSpawnPos;
         //go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite);
-        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite, obstacleDir);
+        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite, obstacleDir,fallTime);
         go.SetActive(true);
     }
     /// <summary>
@@ -200,7 +218,7 @@ public class PlatformSpawner : MonoBehaviour {
         GameObject go = ObjectPool.Instance.GetGrassPlatform();
         go.transform.position = platformSpawnPos;
         //go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite);
-        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite, obstacleDir);
+        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite, obstacleDir,fallTime);
         go.SetActive(true);
     }
     /// <summary>
@@ -211,7 +229,7 @@ public class PlatformSpawner : MonoBehaviour {
         GameObject go = ObjectPool.Instance.GetWinterPlatform();
         go.transform.position = platformSpawnPos;
         //go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite);
-        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite, obstacleDir);
+        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite, obstacleDir,fallTime);
         go.SetActive(true);
     }
     /// <summary>
@@ -229,7 +247,7 @@ public class PlatformSpawner : MonoBehaviour {
             go = ObjectPool.Instance.GetSpikePlatformRight();
         }
         go.transform.position = platformSpawnPos;
-        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite);
+        go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite,fallTime);
         go.SetActive(true);
     }
     /// <summary>
@@ -268,7 +286,7 @@ public class PlatformSpawner : MonoBehaviour {
                         spikeDirPlatformPos = new Vector3(spikeDirPlatformPos.x + vars.nextXPos, spikeDirPlatformPos.y + vars.nextYPos, 0);
                     }
                 }
-                go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite);
+                go.GetComponent<PlatformManager>().Init(curPlatformThemeSprite,fallTime);
                 go.SetActive(true);
             }
         }
@@ -279,4 +297,27 @@ public class PlatformSpawner : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 更新平台掉落时间
+    /// </summary>
+    private void UpdateFallTime()
+    {
+        if (GameManager.Instance.GetGameScore() > milestoneCount)
+        {
+            milestoneCount *= 2;
+            fallTime *= multiple;
+            if (fallTime < minFallTime)
+            {
+                fallTime = minFallTime;
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.IsGameStarted && !GameManager.Instance.IsGameOver)
+        {
+            UpdateFallTime();
+        }
+    }
 }
